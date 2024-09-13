@@ -4973,7 +4973,7 @@ MM_Scavenger::reportGCIncrementStart(MM_EnvironmentStandard *env)
 	stats->_startTime = omrtime_hires_clock();
 
 	intptr_t rc = omrthread_get_process_times(&stats->_startProcessTimes);
-	switch (rc){
+	switch (rc) {
 	case -1: /* Error: Function un-implemented on architecture */
 	case -2: /* Error: getrusage() or GetProcessTimes() returned error value */
 		stats->_startProcessTimes._userTime = I_64_MAX;
@@ -5001,7 +5001,7 @@ MM_Scavenger::reportGCIncrementEnd(MM_EnvironmentStandard *env)
 	stats->collectCollectionStatistics(env, stats);
 
 	intptr_t rc = omrthread_get_process_times(&stats->_endProcessTimes);
-	switch (rc){
+	switch (rc) {
 	case -1: /* Error: Function un-implemented on architecture */
 	case -2: /* Error: getrusage() or GetProcessTimes() returned error value */
 		stats->_endProcessTimes._userTime = 0;

@@ -151,7 +151,7 @@ OMR::SymbolReferenceTable::findOrCreateContiguousArraySizeSymbolRef()
    return element(contiguousArraySizeSymbol);
    }
 
-#if defined(J9VM_GC_ENABLE_SPARSE_HEAP_ALLOCATION)
+#if defined(OMR_GC_SPARSE_HEAP_ALLOCATION)
 TR::SymbolReference *
 OMR::SymbolReferenceTable::findOrCreateContiguousArrayDataAddrFieldShadowSymRef()
    {
@@ -164,7 +164,7 @@ OMR::SymbolReferenceTable::findOrCreateContiguousArrayDataAddrFieldShadowSymRef(
       }
    return element(contiguousArrayDataAddrFieldSymbol);
    }
-#endif // defined(J9VM_GC_ENABLE_SPARSE_HEAP_ALLOCATION)
+#endif // defined(OMR_GC_SPARSE_HEAP_ALLOCATION)
 
 TR::SymbolReference *
 OMR::SymbolReferenceTable::findContiguousArrayDataAddrFieldShadowSymRef()
@@ -315,12 +315,6 @@ TR::SymbolReference *
 OMR::SymbolReferenceTable::findClassDepthAndFlagsSymbolRef()
    {
    return element(isClassDepthAndFlagsSymbol);
-   }
-
-TR::SymbolReference *
-OMR::SymbolReferenceTable::findClassAndDepthFlagsSymbolRef()
-   {
-   return element(isClassAndDepthFlagsSymbol);
    }
 
 
@@ -1534,7 +1528,7 @@ OMR::SymbolReferenceTable::findOrCreateMethodSymbol(
    if (!resolvedMethod)
       symRef->setUnresolved();
    else if (callKind == TR::MethodSymbol::Virtual && cpIndex != -1)
-      symRef->setOffset(resolvedMethod->virtualCallSelector(cpIndex));
+      symRef->setOffset(resolvedMethod->virtualCallSelector());
 
    aliasBuilder.methodSymRefs().set(symRef->getReferenceNumber());
 
