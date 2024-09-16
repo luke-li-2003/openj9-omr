@@ -9760,8 +9760,7 @@ PUGI__NS_BEGIN
 			return false;
 		}
 
-		template <class T> inline void
-		step_fill(xpath_node_set_raw& ns, xml_node_struct* n, xpath_allocator* alloc, bool once, T)
+		template <class T> void step_fill(xpath_node_set_raw& ns, xml_node_struct* n, xpath_allocator* alloc, bool once, T)
 		{
 			const axis_t axis = T::axis;
 
@@ -9954,7 +9953,7 @@ PUGI__NS_BEGIN
 			}
 		}
 
-		template <class T> /*__attribute((noinline))*/ void
+		template <class T> PUGI__NO_INLINE void
 		step_fill(xpath_node_set_raw& ns, xml_attribute_struct* a, xml_node_struct* p, xpath_allocator* alloc, bool once, T v)
 		{
 			const axis_t axis = T::axis;
@@ -11771,7 +11770,8 @@ PUGI__NS_BEGIN
 		//						  | MultiplicativeExpr '*' UnaryExpr
 		//						  | MultiplicativeExpr 'div' UnaryExpr
 		//						  | MultiplicativeExpr 'mod' UnaryExpr
-		xpath_ast_node* parse_expression()
+		PUGI__NO_INLINE xpath_ast_node*
+		parse_expression()
 		{
 			return parse_expression_rec(parse_path_or_unary_expression(), 0);
 		}
