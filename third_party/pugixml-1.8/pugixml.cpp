@@ -9954,7 +9954,7 @@ PUGI__NS_BEGIN
 			}
 		}
 
-		template <class T> __attribute((noinline)) void
+		template <class T> /*__attribute((noinline))*/ void
 		step_fill(xpath_node_set_raw& ns, xml_attribute_struct* a, xml_node_struct* p, xpath_allocator* alloc, bool once, T v)
 		{
 			const axis_t axis = T::axis;
